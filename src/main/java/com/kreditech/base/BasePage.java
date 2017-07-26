@@ -112,6 +112,7 @@ public class BasePage<T> {
             try {
                 waitFor(ExpectedConditions.visibilityOfElementLocated(element), (timeOutInSeconds.length > 0 ? timeOutInSeconds[0] : null));
             } catch (StaleElementReferenceException e) {
+                e.getMessage();
             }
             attempts++;
         }
@@ -138,7 +139,9 @@ public class BasePage<T> {
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         String timeFolder = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
         String timeStamp = new SimpleDateFormat("dd_HHmmss").format(Calendar.getInstance().getTime());
-        File screenShotName = new File("./results/screenshots/" + timeFolder + "/" + timeStamp + ".png");
+        String filePath = File.separator + "screenshots" + File.separator + timeFolder + File.separator + timeStamp + ".png";
+
+        File screenShotName = new File("." + File.separator + "results" + filePath);
         //save screenshot
         try {
             FileUtils.copyFile(scrFile, screenShotName);
@@ -146,9 +149,8 @@ public class BasePage<T> {
             System.out.println("Exception while taking ScreenShot " + e.getMessage());
         }
         //add screenshot to report
-        String filePath = "./screenshots/" + timeFolder + "/" + timeStamp + ".png";
-        String aLink = "<a href='"+ filePath + "' target='_blank' title='" + action + "'>";
-        String imgScr = "<img src='" + filePath + "' alt='" + action + "' height='108' width='192'/></a>";
+        String aLink = "<a href='"+ "." + filePath + "' target='_blank' title='" + action + "'>";
+        String imgScr = "<img src='" + "." + filePath + "' alt='" + action + "' height='108' width='192'/></a>";
         Reporter.log(aLink + imgScr);
     }
 }
