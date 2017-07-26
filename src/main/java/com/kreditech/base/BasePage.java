@@ -1,5 +1,6 @@
 package com.kreditech.base;
 
+
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -133,6 +134,14 @@ public class BasePage<T> {
     public void assertContainsString(String actual, String expected, String massage) {
         assertTrue(actual.contains(expected),
                 massage + " is not expected. \nExpected: " + expected + "\nActual  : " + actual + "\n");
+    }
+
+    public void checkPageTitle(String pageTitle) {
+        assertEqualStrings(getTitle(), pageTitle, "Page title");
+    }
+
+    public void checkPageUrl(String pageUrl){
+        assertEqualStrings(getCurrentUrl(), pageUrl, "Page URL");
     }
 
     public void screenshot(WebDriver driver, String action) {

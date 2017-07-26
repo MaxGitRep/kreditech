@@ -27,10 +27,8 @@ public class SearchKreditechTest extends BaseTest {
         LOG.info("search company site in google.com by " + KEY);
         GoogleMainPage mainPage = new GoogleMainPage(driver);
         GoogleResultsPage resultsPage = mainPage.searchByKey(KEY);
+
         LOG.info("open company site from searching results");
-        resultsPage.clickRelevantResultByKey(URL)
-                .waitHomePageLoaded()
-                .checkPageTitle()
-                .checkPageUrl();
+        resultsPage.clickRelevantResultByKey(URL).waitHomePageLoaded();
     }
 }

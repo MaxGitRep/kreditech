@@ -25,16 +25,8 @@ public class WhoWeArePage extends BasePage<WhoWeArePage> {
 
     public WhoWeArePage waitPageLoaded(){
         waitForVisibilityOf(getMenuFooter());
-        return this;
-    }
-
-    public WhoWeArePage checkPageTitle() {
-        assertEqualStrings(getTitle(), getPageTitle(), "Page title");
-        return this;
-    }
-
-    public WhoWeArePage checkPageUrl(){
-        assertEqualStrings(getCurrentUrl(), getPageUrl(), "Page URL");
+        checkPageTitle(getPageTitle());
+        checkPageUrl(getPageUrl());
         return this;
     }
 }

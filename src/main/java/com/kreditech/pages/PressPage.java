@@ -25,16 +25,8 @@ public class PressPage extends BasePage<PressPage> {
 
     public PressPage waitPageLoaded(){
         waitForVisibilityOf(getMenuFooter());
-        return this;
-    }
-
-    public PressPage checkPageTitle() {
-        assertEqualStrings(getTitle(), getPageTitle(), "Page title");
-        return this;
-    }
-
-    public PressPage checkPageUrl(){
-        assertEqualStrings(getCurrentUrl(), getPageUrl(), "Page URL");
+        checkPageTitle(getPageTitle());
+        checkPageUrl(getPageUrl());
         return this;
     }
 }

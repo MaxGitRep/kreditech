@@ -47,23 +47,16 @@ public class HomePage extends BasePage<HomePage> {
         click(socialTwitter);
         return new TwitterCompanyPage(driver);
     }
-    public void openHomePage(){
+    public HomePage openHomePage(){
         getPage(HOME_PAGE_URL);
         waitHomePageLoaded();
+        return this;
     }
 
     public HomePage waitHomePageLoaded (){
         waitForVisibilityOf(getMenuFooter());
-        return this;
-    }
-
-    public HomePage checkPageTitle() {
-        assertEqualStrings(getTitle(), getHomePageTitle(), "Page title");
-        return this;
-    }
-
-    public HomePage checkPageUrl(){
-        assertEqualStrings(getCurrentUrl(), getHomePageUrl(), "Page URL");
+        checkPageTitle(getHomePageTitle());
+        checkPageUrl(getHomePageUrl());
         return this;
     }
 }

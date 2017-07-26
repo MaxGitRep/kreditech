@@ -25,16 +25,8 @@ public class InvestorRelationsPage extends BasePage<InvestorRelationsPage> {
 
     public InvestorRelationsPage waitPageLoaded(){
         waitForVisibilityOf(getMenuFooter());
-        return this;
-    }
-
-    public InvestorRelationsPage checkPageTitle() {
-        assertContainsString(getTitle(), getPageTitle(), "Page title");
-        return this;
-    }
-
-    public InvestorRelationsPage checkPageUrl(){
-        assertEqualStrings(getCurrentUrl(), getPageUrl(), "Page URL");
+        checkPageTitle(getPageTitle());
+        checkPageUrl(getPageUrl());
         return this;
     }
 }

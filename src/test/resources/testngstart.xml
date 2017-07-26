@@ -16,7 +16,7 @@
     </test>
     <test name="Navigation Bar Test">
         <classes>
-            <class name="com.kreditech.navigationBarItemsTest.NavigationBarTest"/>
+            <class name="com.kreditech.navigationTest.NavigationBarTest"/>
         </classes>
     </test>
 </suite>

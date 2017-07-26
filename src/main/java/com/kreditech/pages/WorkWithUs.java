@@ -25,17 +25,8 @@ public class WorkWithUs extends BasePage<WorkWithUs> {
 
     public WorkWithUs waitPageLoaded(){
         waitForVisibilityOf(getMenuFooter());
+        checkPageTitle(getPageTitle());
+        checkPageUrl(getPageUrl());
         return this;
     }
-
-    public WorkWithUs checkPageTitle() {
-        assertEqualStrings(getTitle(), getPageTitle(), "Page title");
-        return this;
-    }
-
-    public WorkWithUs checkPageUrl(){
-        assertEqualStrings(getCurrentUrl(), getPageUrl(), "Page URL");
-        return this;
-    }
-
 }

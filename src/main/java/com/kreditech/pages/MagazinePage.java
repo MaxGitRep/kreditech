@@ -25,6 +25,8 @@ public class MagazinePage extends BasePage<MagazinePage> {
 
     public MagazinePage waitPageLoaded(){
         waitForVisibilityOf(getMenuFooter());
+        checkPageTitle();
+        checkPageUrl();
         return this;
     }
 

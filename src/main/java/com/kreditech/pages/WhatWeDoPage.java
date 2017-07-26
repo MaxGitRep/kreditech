@@ -25,16 +25,8 @@ public class WhatWeDoPage extends BasePage<WhatWeDoPage> {
 
     public WhatWeDoPage waitPageLoaded(){
         waitForVisibilityOf(getMenuFooter());
-        return this;
-    }
-
-    public WhatWeDoPage checkPageTitle() {
-        assertEqualStrings(getTitle(), getPageTitle(), "Page title");
-        return this;
-    }
-
-    public WhatWeDoPage checkPageUrl(){
-        assertEqualStrings(getCurrentUrl(), getPageUrl(), "Page URL");
+        checkPageTitle(getPageTitle());
+        checkPageUrl(getPageUrl());
         return this;
     }
 

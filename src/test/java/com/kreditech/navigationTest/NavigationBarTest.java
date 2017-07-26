@@ -1,4 +1,4 @@
-package com.kreditech.navigationBarItemsTest;
+package com.kreditech.navigationTest;
 
 import com.kreditech.base.BaseTest;
 import com.kreditech.pages.*;
@@ -26,50 +26,34 @@ public class NavigationBarTest extends BaseTest {
     public void canOpenPagesFromNavBar() {
         //open company site
         LOG.info("open company site");
-        HomePage homePage = new HomePage(driver);
-        homePage.openHomePage();
+        HomePage homePage = new HomePage(driver).openHomePage();
         //open pages
         LOG.info("open What we do page");
         homePage.clickOnMainMenuItem("What we do");
-        WhatWeDoPage whatPage = new WhatWeDoPage(driver)
-                .waitPageLoaded()
-                .checkPageTitle()
-                .checkPageUrl();
+        WhatWeDoPage whatPage = new WhatWeDoPage(driver).waitPageLoaded();
+
         LOG.info("open Who we are page");
         whatPage.clickOnMainMenuItem("Who we are");
-        WhoWeArePage whoPage = new WhoWeArePage(driver)
-                .waitPageLoaded()
-                .checkPageTitle()
-                .checkPageUrl();
+        WhoWeArePage whoPage = new WhoWeArePage(driver).waitPageLoaded();
+
         LOG.info("open Work with us page");
         whoPage.clickOnMainMenuItem("Work with us");
-        WorkWithUs joinPage = new WorkWithUs(driver)
-                .waitPageLoaded()
-                .checkPageTitle()
-                .checkPageUrl();
+        WorkWithUs joinPage = new WorkWithUs(driver).waitPageLoaded();
+
         LOG.info("open Careers page");
         joinPage.clickOnMainMenuItem("Careers");
-        CareersPage workPage = new CareersPage(driver)
-                .waitPageLoaded()
-                .checkPageTitle()
-                .checkPageUrl();
+        CareersPage workPage = new CareersPage(driver).waitPageLoaded();
+
         LOG.info("open Investor Relations page");
         workPage.clickOnMainMenuItem("Investor Relations");
-        InvestorRelationsPage investPage = new InvestorRelationsPage(driver)
-                .waitPageLoaded()
-                .checkPageTitle()
-                .checkPageUrl();
+        InvestorRelationsPage investPage = new InvestorRelationsPage(driver).waitPageLoaded();
+
         LOG.info("open Press page");
         investPage.clickOnMainMenuItem("Press");
-        PressPage pressPage = new PressPage(driver)
-                .waitPageLoaded()
-                .checkPageTitle()
-                .checkPageUrl();
+        PressPage pressPage = new PressPage(driver).waitPageLoaded();
+
         LOG.info("open Magazine page");
         pressPage.clickOnMainMenuItem("Magazine");
-        MagazinePage magazinePage = new MagazinePage(driver)
-                .waitPageLoaded()
-                .checkPageTitle()
-                .checkPageUrl();
+        MagazinePage magazinePage = new MagazinePage(driver).waitPageLoaded();
     }
 }

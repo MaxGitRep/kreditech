@@ -25,16 +25,8 @@ public class CareersPage extends BasePage<CareersPage> {
 
     public CareersPage waitPageLoaded(){
         waitForVisibilityOf(getMenuFooter());
-        return this;
-    }
-
-    public CareersPage checkPageTitle() {
-        assertEqualStrings(getTitle(), getPageTitle(), "Page title");
-        return this;
-    }
-
-    public CareersPage checkPageUrl(){
-        assertEqualStrings(getCurrentUrl(), getPageUrl(), "Page URL");
+        checkPageTitle(getPageTitle());
+        checkPageUrl(getPageUrl());
         return this;
     }
 }
