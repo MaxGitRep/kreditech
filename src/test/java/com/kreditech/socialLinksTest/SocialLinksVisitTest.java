@@ -26,32 +26,32 @@ public class SocialLinksVisitTest extends BaseTest {
 
     @Test
     public void testCanOpenSocialCompanyProfiles() {
-        LOG.info("login to Linkedin");
+        log("Step 1. login to Linkedin");
         LinkedinLoginPage loginPage = new LinkedinLoginPage(driver);
         loginPage.openLoginPage()
                 .fillUpEmailPass("raj.bigtheory@gmail.com", "Dza94t2017");
         LinkedinCompanyPage profilePage = loginPage.pushSignInButton();
         profilePage.waitPageLoaded();
 
-        LOG.info("open company site");
+        log("Step 2. open company site");
         HomePage homePage = new HomePage(driver).openHomePage();
 
         //get home page tab
         String parentHandle = driver.getWindowHandle();
 
-        LOG.info("link to social Linkedin company profile, check and close tab");
+        log("Step 3. link to social Linkedin company profile, check and close tab");
         LinkedinCompanyPage companyLinkPage = homePage.clickOnLinkedinLink();
         companyLinkPage.switchFocusToNewTab();
         companyLinkPage.waitPageLoaded().checkPageTitle();
         companyLinkPage.closeNewTab(parentHandle);
 
-        LOG.info("link to social Facebook company profile, check and close tab");
+        log("Step 4. link to social Facebook company profile, check and close tab");
         FacebookCompanyPage companyFacePage = homePage.clickOnFacebookLink();
         companyFacePage.switchFocusToNewTab();
         companyFacePage.waitPageLoaded().checkPageTitle();
         companyFacePage.closeNewTab(parentHandle);
 
-        LOG.info("link to social Twitter company profile, check and close tab");
+        log("Step 5. link to social Twitter company profile, check and close tab");
         TwitterCompanyPage companyTwitPage = homePage.clickOnTwitterLink();
         companyTwitPage.switchFocusToNewTab();
         companyTwitPage.waitPageLoaded().checkPageTitle();

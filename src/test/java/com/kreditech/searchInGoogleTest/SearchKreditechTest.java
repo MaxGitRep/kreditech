@@ -24,11 +24,11 @@ public class SearchKreditechTest extends BaseTest {
 
     @Test
     public void testCanSearchInGoogle() {
-        LOG.info("search company site in google.com by " + KEY);
+        log("Step 1. search company site in google.com by " + KEY);
         GoogleMainPage mainPage = new GoogleMainPage(driver);
         GoogleResultsPage resultsPage = mainPage.searchByKey(KEY);
 
-        LOG.info("open company site from searching results");
+        log("Step 2. open company site from searching results");
         resultsPage.clickRelevantResultByKey(URL).waitHomePageLoaded();
     }
 }

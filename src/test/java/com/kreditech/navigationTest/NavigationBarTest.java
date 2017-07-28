@@ -23,36 +23,35 @@ import org.testng.annotations.Test;
 public class NavigationBarTest extends BaseTest {
 
     @Test
-    public void canOpenPagesFromNavBar() {
-        //open company site
-        LOG.info("open company site");
+    public void testCanOpenPagesFromNavBar() {
+        log("Step 1. open company site");
         HomePage homePage = new HomePage(driver).openHomePage();
-        //open pages
-        LOG.info("open What we do page");
+
+        log("Step 2. open What we do page");
         homePage.clickOnMainMenuItem("What we do");
         WhatWeDoPage whatPage = new WhatWeDoPage(driver).waitPageLoaded();
 
-        LOG.info("open Who we are page");
+        log("Step 3. open Who we are page");
         whatPage.clickOnMainMenuItem("Who we are");
         WhoWeArePage whoPage = new WhoWeArePage(driver).waitPageLoaded();
 
-        LOG.info("open Work with us page");
+        log("Step 4. open Work with us page");
         whoPage.clickOnMainMenuItem("Work with us");
         WorkWithUs joinPage = new WorkWithUs(driver).waitPageLoaded();
 
-        LOG.info("open Careers page");
+        log("Step 5. open Careers page");
         joinPage.clickOnMainMenuItem("Careers");
         CareersPage workPage = new CareersPage(driver).waitPageLoaded();
 
-        LOG.info("open Investor Relations page");
+        log("Step 6. open Investor Relations page");
         workPage.clickOnMainMenuItem("Investor Relations");
         InvestorRelationsPage investPage = new InvestorRelationsPage(driver).waitPageLoaded();
 
-        LOG.info("open Press page");
+        log("Step 7. open Press page");
         investPage.clickOnMainMenuItem("Press");
         PressPage pressPage = new PressPage(driver).waitPageLoaded();
 
-        LOG.info("open Magazine page");
+        log("Step 8. open Magazine page");
         pressPage.clickOnMainMenuItem("Magazine");
         MagazinePage magazinePage = new MagazinePage(driver).waitPageLoaded();
     }

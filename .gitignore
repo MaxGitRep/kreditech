@@ -1,7 +1,7 @@
 # Ignore objects and archives.
-.idea/
-.target/
-.results/
+.idea
+.target
+.results
 *.iml
 pom.xml
 

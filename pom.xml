@@ -15,6 +15,7 @@
         <surefire.plugin.version>2.20</surefire.plugin.version>
         <selenium.java.version>3.4.0</selenium.java.version>
         <testng.version>6.11</testng.version>
+        <driver.version>1.6.2</driver.version>
         <slf4j.api.version>1.7.25</slf4j.api.version>
     </properties>
 
@@ -61,6 +62,12 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${driver.version}</version>
         </dependency>
 
         <!--Logging and reporting-->

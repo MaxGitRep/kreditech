@@ -1,6 +1,7 @@
 package com.kreditech.base;
 
 
+import com.kreditech.utilities.CaptureScreenshot;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -13,6 +14,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import static com.kreditech.utilities.CaptureScreenshot.takeScreenshot;
 import static org.testng.Assert.assertTrue;
 
 /**
@@ -40,7 +42,7 @@ public class BasePage<T> {
 
     protected T getPage(String url) {
         driver.get(url);
-        screenshot(driver, "openPage_" + url);
+        takeScreenshot(driver);
         return (T) this;
     }
 
@@ -62,36 +64,36 @@ public class BasePage<T> {
 
     protected void type(String text, By element) {
         find(element).sendKeys(text);
-        screenshot(driver, "typeText_" + text + "_in_" + element);
+        takeScreenshot(driver);
     }
 
     protected void type(Keys key, By element) {
         find(element).sendKeys(key);
-        screenshot(driver, "pressKey_" + key.name() + "_in_" + element);
+        takeScreenshot(driver);
     }
 
     protected void click(By element) {
         find(element).click();
-        screenshot(driver, "clickElem_" + element);
+        takeScreenshot(driver);
     }
 
     protected void click(By parentElement, By childElement) {
         findByFind(parentElement, childElement).click();
-        screenshot(driver, "clickElem_" + parentElement + " | " + childElement);
+        takeScreenshot(driver);
     }
 
     //switch focus of WebDriver to the next found window handle
     public void switchFocusToNewTab() {
         for (String winHandle : driver.getWindowHandles()) {
             driver.switchTo().window(winHandle);
-            screenshot(driver, "switchFocus_" + winHandle);
+            takeScreenshot(driver);
         }
     }
 
     public void closeNewTab(String parentHandle) {
         driver.close();
         driver.switchTo().window(parentHandle);
-        screenshot(driver, "closeTab_andBackTo_" + parentHandle);
+        takeScreenshot(driver);
     }
 
     public void clickOnMainMenuItem(String itemName) {
@@ -117,7 +119,7 @@ public class BasePage<T> {
             }
             attempts++;
         }
-        screenshot(driver, "waitElem_" + element);
+        takeScreenshot(driver);
     }
 
     private void waitFor(ExpectedCondition<WebElement> condition, Integer timeOutInSeconds) {
@@ -144,22 +146,18 @@ public class BasePage<T> {
         assertEqualStrings(getCurrentUrl(), pageUrl, "Page URL");
     }
 
-    public void screenshot(WebDriver driver, String action) {
-        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        String timeFolder = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
-        String timeStamp = new SimpleDateFormat("dd_HHmmss").format(Calendar.getInstance().getTime());
-        String filePath = File.separator + "screenshots" + File.separator + timeFolder + File.separator + timeStamp + ".png";
-
-        File screenShotName = new File("." + File.separator + "results" + filePath);
-        //save screenshot
-        try {
-            FileUtils.copyFile(scrFile, screenShotName);
-        } catch (IOException e) {
-            System.out.println("Exception while taking ScreenShot " + e.getMessage());
-        }
-        //add screenshot to report
-        String aLink = "<a href='"+ "." + filePath + "' target='_blank' title='" + action + "'>";
-        String imgScr = "<img src='" + "." + filePath + "' alt='" + action + "' height='108' width='192'/></a>";
-        Reporter.log(aLink + imgScr);
-    }
+//    public void screenshot(WebDriver driver) {
+//        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+//        String timeFolder = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
+//        String timeStamp = new SimpleDateFormat("dd_HHmmss").format(Calendar.getInstance().getTime());
+//        String filePath = File.separator + "screenshots" + File.separator + timeFolder + File.separator + timeStamp + ".png";
+//
+//        File screenShotName = new File("." + File.separator + "results" + filePath);
+//        //save screenshot
+//        try {
+//            FileUtils.copyFile(scrFile, screenShotName);
+//        } catch (IOException e) {
+//            System.out.println("Exception while taking ScreenShot " + e.getMessage());
+//        }
+//    }
 }
