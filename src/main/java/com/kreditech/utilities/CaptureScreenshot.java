@@ -11,9 +11,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-/**
- * Created by pc on 28.07.2017.
- */
 public class CaptureScreenshot {
 
     private static String filePath;

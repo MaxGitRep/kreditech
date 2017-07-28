@@ -1,18 +1,10 @@
 package com.kreditech.base;
 
 
-import com.kreditech.utilities.CaptureScreenshot;
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Reporter;
-
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import static com.kreditech.utilities.CaptureScreenshot.takeScreenshot;
 import static org.testng.Assert.assertTrue;
@@ -146,18 +138,4 @@ public class BasePage<T> {
         assertEqualStrings(getCurrentUrl(), pageUrl, "Page URL");
     }
 
-//    public void screenshot(WebDriver driver) {
-//        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-//        String timeFolder = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
-//        String timeStamp = new SimpleDateFormat("dd_HHmmss").format(Calendar.getInstance().getTime());
-//        String filePath = File.separator + "screenshots" + File.separator + timeFolder + File.separator + timeStamp + ".png";
-//
-//        File screenShotName = new File("." + File.separator + "results" + filePath);
-//        //save screenshot
-//        try {
-//            FileUtils.copyFile(scrFile, screenShotName);
-//        } catch (IOException e) {
-//            System.out.println("Exception while taking ScreenShot " + e.getMessage());
-//        }
-//    }
 }
